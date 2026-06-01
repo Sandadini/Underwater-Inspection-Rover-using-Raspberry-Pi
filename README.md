@@ -169,7 +169,7 @@ The rover was tested in a controlled pool environment.
 
 ### Pool Testing
 ```
-images/pool_test.jpg
+images/rover.jpg
 ```
 
 ---
