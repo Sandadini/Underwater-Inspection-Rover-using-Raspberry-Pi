@@ -1,0 +1,6 @@
+pigpio
+opencv-python
+picamera2
+Pillow
+PyQt5
+numpy
