@@ -2,89 +2,64 @@
 
 ## Overview
 
-The Smart Underwater Inspection Rover is a remotely operated underwater vehicle (ROV) developed using Raspberry Pi 4 for real-time navigation, live video streaming, and environmental monitoring. The system is designed to provide reliable underwater operation through a tethered Ethernet connection while collecting visual and sensor data from aquatic environments.
+This project is a remotely operated underwater rover (ROV) built using Raspberry Pi 4 for real-time navigation, live video streaming, and environmental monitoring. The system is designed for stable underwater control using a tethered Ethernet connection, allowing low-latency communication and reliable operation in aquatic environments.
 
-The rover utilizes four brushless thrusters controlled via Electronic Speed Controllers (ESCs), enabling stable maneuverability in both horizontal and vertical directions. An onboard Raspberry Pi Camera provides live video feedback to the operator, while a waterproof temperature sensor continuously monitors water temperature and logs measurements for further analysis.
+The rover integrates a four-thruster propulsion system controlled via pigpio PWM signals, a Raspberry Pi Camera for live video feedback, and a waterproof temperature sensor for real-time environmental data logging. A custom PyQt5-based GUI provides full manual control, system monitoring, and camera interaction.
 
-This project demonstrates the integration of embedded systems, robotics, networking, and environmental sensing technologies to create a cost-effective underwater inspection platform.
+This project demonstrates embedded systems design, robotics control, and real-time data acquisition in underwater conditions.
 
 ---
 
 ## Features
 
-- Real-time underwater navigation and control
-- Live video streaming using Raspberry Pi Camera
-- Four-thruster propulsion system
-- Waterproof temperature monitoring
-- Ethernet-based tethered communication
-- Custom Python-based GUI
-- CSV data logging for sensor readings
-- Stable underwater operation with balanced propulsion
-- Modular architecture for future upgrades
+- Real-time underwater navigation and control via GUI
+- Live video streaming using Raspberry Pi Camera (Picamera2)
+- Four-motor propulsion system using ESCs and pigpio PWM
+- Waterproof temperature sensing with CSV logging
+- Keyboard and button-based control interface
+- Image capture from underwater camera feed
+- Multi-threaded sensor monitoring and GUI updates
+- Tethered Ethernet communication for stable control
 
 ---
 
 ## Hardware Components
 
-| Component | Purpose |
-|------------|------------|
-| Raspberry Pi 4 | Main Controller |
-| Raspberry Pi Camera Module | Live Video Streaming |
-| 4 Brushless DC Motors | Underwater Propulsion |
-| 4 ESCs | Motor Speed Control |
-| Waterproof Temperature Sensor | Environmental Monitoring |
-| Ethernet Cable | Communication Link |
-| LiPo Battery Pack | Power Supply |
-| Waterproof Enclosure | Protection of Electronics |
-
----
-
-## System Architecture
-
-```text
-Operator Laptop
-       │
-   Ethernet Tether
-       │
- Raspberry Pi 4
- ├── Camera Module
- ├── Temperature Sensor
- ├── ESC Controller
- │     ├── Thruster 1
- │     ├── Thruster 2
- │     ├── Thruster 3
- │     └── Thruster 4
- └── PyQt Control Interface
-```
+- Raspberry Pi 4
+- Raspberry Pi Camera Module
+- 4 × Brushless DC Motors (Thrusters)
+- 4 × Electronic Speed Controllers (ESCs)
+- DS18B20 Waterproof Temperature Sensor
+- JSN-SR04T Ultrasonic Sensor (Obstacle detection)
+- Ethernet Cable (Tethered Communication)
+- LiPo Battery Pack
+- Waterproof Enclosure
 
 ---
 
 ## Software Stack
 
 - Python 3
-- PyQt5
-- OpenCV
-- pigpio
-- RPi.GPIO
+- PyQt5 (GUI Development)
+- OpenCV (Image Processing)
+- Picamera2 (Camera Interface)
+- pigpio (PWM Motor Control)
+- PIL (Image Handling)
+- CSV Logging System
 - Raspberry Pi OS
-- RealVNC
 
 ---
 
 ## Project Structure
 
-```text
-Underwater-Rover/
+```
+Underwater-Inspection-Rover-using-Raspberry-Pi/
 │
 ├── README.md
 ├── requirements.txt
 │
 ├── code/
-│   ├── main.py
-│   ├── motor_control.py
-│   ├── camera_stream.py
-│   ├── temperature_sensor.py
-│   └── gui.py
+│   └── Underwater_Rover.py
 │
 ├── images/
 │   ├── rover.jpg
@@ -92,80 +67,113 @@ Underwater-Rover/
 │   └── system_diagram.png
 │
 └── docs/
-    └── project_report.pdf
+    └── Underwater_Rover_Presentation.pptx
 ```
 
 ---
 
 ## Installation
 
-Clone the repository:
+### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/underwater-rover.git
-cd underwater-rover
+git clone https://github.com/Sandadini/Underwater-Inspection-Rover-using-Raspberry-Pi.git
+cd Underwater-Inspection-Rover-using-Raspberry-Pi
 ```
 
-Install dependencies:
+---
+
+### Install Python Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the application:
+---
+
+### Install Raspberry Pi System Dependencies
 
 ```bash
-python main.py
+sudo apt update
+sudo apt install python3-picamera2 python3-pigpio
+sudo systemctl start pigpiod
+```
+
+---
+
+## Running the Project
+
+```bash
+python code/Underwater_Rover.py
+```
+
+---
+
+## System Architecture
+
+```
+Operator Laptop
+       │
+   Ethernet Tether
+       │
+ Raspberry Pi 4
+ ├── Camera Module (Live Feed)
+ ├── Temperature Sensor (DS18B20)
+ ├── Ultrasonic Sensor (Obstacle Detection)
+ ├── pigpio PWM Controller
+ │     ├── Thruster 1
+ │     ├── Thruster 2
+ │     ├── Thruster 3
+ │     └── Thruster 4
+ └── PyQt5 Control Interface
 ```
 
 ---
 
 ## Testing Results
 
-The rover was successfully tested in a controlled pool environment.
+The rover was tested in a controlled pool environment.
 
-### Test Outcomes
-
-- Stable underwater operation
-- Smooth horizontal and vertical navigation
-- Successful live video transmission
+### Results:
+- Stable underwater navigation
+- Smooth directional control
+- Real-time camera streaming
 - Accurate temperature monitoring
-- Reliable Ethernet communication
-- No water leakage detected during testing
+- Reliable tethered communication
+- No water leakage during testing
 
 ---
 
 ## Applications
 
-- Underwater inspections
+- Underwater structure inspection
 - Environmental monitoring
 - Aquaculture observation
 - Educational robotics projects
-- Marine research applications
+- Remote marine exploration
 
 ---
 
 ## Future Improvements
 
-- IMU-based stabilization
-- Depth and pressure sensing
-- Sonar integration
-- Autonomous navigation
-- AI-based object detection
-- Cloud-based telemetry dashboard
+- IMU-based stabilization system
+- Depth sensing and pressure monitoring
+- Autonomous navigation mode
+- Sonar-based obstacle detection
+- AI-based underwater object detection
+- Wireless control interface
 
 ---
 
 ## Demonstration
 
-Add your project photos and testing videos here.
-
 ### Pool Testing
-
-![Pool Test](images/pool_test.jpg)
+```
+images/pool_test.jpg
+```
 
 ---
 
 ## Author
 
-Developed as an embedded systems and robotics project focused on underwater exploration, remote inspection, and environmental monitoring using Raspberry Pi and Python.
+Developed as an embedded systems and robotics project focused on underwater inspection, real-time control systems, and environmental monitoring using Raspberry Pi and Python.
