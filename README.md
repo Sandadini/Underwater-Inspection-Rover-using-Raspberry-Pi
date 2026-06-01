@@ -167,10 +167,9 @@ The rover was tested in a controlled pool environment.
 
 ## Demonstration
 
-### Pool Testing
-```
-images/rover.jpg
-```
+## Rover Prototype
+
+![Underwater Rover](images/rover.jpg)
 
 ---
 
